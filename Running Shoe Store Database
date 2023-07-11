@@ -1,0 +1,30 @@
+--Create a store database
+
+CREATE TABLE running_shoes (id integer primary key, type text, quantity integer, price integer);
+
+INSERT INTO running_shoes VALUES(1, "Road Running", 125, 130);
+INSERT INTO running_shoes VALUES(2, "Trail Running", 35, 100);
+INSERT INTO running_shoes VALUES(3, "Cushioned Shoes", 85, 125);
+INSERT INTO running_shoes VALUES(4, "Stability Shoes", 40, 130);
+INSERT INTO running_shoes VALUES(5, "Race Day Shoes", 65, 200);
+INSERT INTO running_shoes VALUES(6, "Long Distance Shoes", 35, 140);
+INSERT INTO running_shoes VALUES(7, "Daily Training", 135, 125);
+INSERT INTO running_shoes VALUES(8, "NO Blister Socks", 35, 16);
+INSERT INTO running_shoes VALUES(9, "Water Bottle", 30, 25);
+INSERT INTO running_shoes VALUES(10, "Running Belt", 20, 26);
+INSERT INTO running_shoes VALUES(11, "Glide Stick", 32, 12);
+INSERT INTO running_shoes VALUES(12, "Energy Gels", 42, 4);
+INSERT INTO running_shoes VALUES(13, "Salt Tabs", 35, 20);
+INSERT INTO running_shoes VALUES(14, "Recovery Shake Mix", 35, 60);
+INSERT INTO running_shoes VALUES(15, "Running Watch", 25, 499);
+
+--Display order by price
+SELECT * FROM running_shoes ORDER BY price asc
+
+--What are the top 5 most expensive items?
+SELECT * FROM running_shoes ORDER BY price desc LIMIT 5
+
+--Total Inventory and Total price of inventory on hand
+SELECT sum(quantity), sum(price) FROM running_shoes
+
+
