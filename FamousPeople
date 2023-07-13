@@ -1,0 +1,98 @@
+/* Create table about the people and what they do here */
+CREATE TABLE famous_people (id integer primary key, name text, spouse text);
+
+
+INSERT INTO famous_people VALUES (1, "Nicole Kidman", "Keith Urban");
+INSERT INTO famous_people VALUES (2, "Goldie Hawn", "Kirk Russel");
+INSERT INTO famous_people VALUES (3, "Harrison Ford", "Calista Flockhart");
+INSERT INTO famous_people VALUES (4, "Beyonce", "Jay Z");
+INSERT INTO famous_people VALUES (5, "Blake Lively", "Ryan Reynolds");
+INSERT INTO famous_people VALUES (6, "Joe Jonas", "Sophie Turner");
+INSERT INTO famous_people VALUES (7, "Kristen Bell", "Dax Shepard");
+INSERT INTO famous_people VALUES (8, "Sarah Jessica Parker", "Matthew Broderick");
+
+CREATE TABLE famous_for(id integer primary key, name text, famousfor text);
+
+INSERT INTO famous_for VALUES (1, "Nicole Kidman", "actor");
+INSERT INTO famous_for VALUES (2, "Goldie Hawn", "actor");
+INSERT INTO famous_for VALUES (3, "Harrison Ford", "actor");
+INSERT INTO famous_for VALUES (4, "Beyonce", "singer");
+INSERT INTO famous_for VALUES (5, "Blake Lively", "actor");
+INSERT INTO famous_for VALUES (6, "Joe Jonas", "singer");
+INSERT INTO famous_for VALUES (7, "Kristen Bell", "actor");
+INSERT INTO famous_for VALUES (8, "Sarah Jessica Parker", "actor");
+
+CREATE TABLE spouse_famous(id integer primary key, name text, famousfors text);
+
+INSERT INTO spouse_famous VALUES (1, "Keith Urban", "singer");
+INSERT INTO spouse_famous VALUES (2, "Kurt Russel", "actor");
+INSERT INTO spouse_famous VALUES (3, "Calista Flockhart", "actor");
+INSERT INTO spouse_famous VALUES (4, "Jay Z", "singer");
+INSERT INTO spouse_famous VALUES (5, "Ryan Reynolds", "actor");
+INSERT INTO spouse_famous VALUES (6, "Sophie", "actor");
+INSERT INTO spouse_famous VALUES (7, "Dax Shepard", "actor");
+INSERT INTO spouse_famous VALUES (8, "Matthew Broderick", "actor");
+
+CREATE TABLE top_hit(id integer primary key, title text, dollars_albums integer);
+
+INSERT INTO top_hit VALUES (1, "Aquaman", 1000000000);
+INSERT INTO top_hit VALUES (2, "The First Wives Club", 105000000);
+INSERT INTO top_hit VALUES (3, "Star Wars Episode VII", 2064000000);
+INSERT INTO top_hit VALUES (4, "I am Sasha Fierce", 9680000);
+INSERT INTO top_hit VALUES (5, "Green Lantern", 220000000);
+INSERT INTO top_hit VALUES (6, "A Little Bit Longer", 1553000);
+INSERT INTO top_hit VALUES (7, "Frozen", 1200000000);
+INSERT INTO top_hit VALUES (8, "Sex and the City", 418800000);
+
+CREATE TABLE top_hitspouse(id integer primary key, title text, dollars_albums integer);
+
+INSERT INTO top_hitspouse VALUES (1, "Be Here", 4410000);
+INSERT INTO top_hitspouse VALUES (2, "Guardians of the Galaxy Vol 2", 863000000);
+INSERT INTO top_hitspouse VALUES (3, "The Birdcage", 181760000);
+INSERT INTO top_hitspouse VALUES (4, "Hard Knock Life", 6200000);
+INSERT INTO top_hitspouse VALUES (5, "Deadpool", 800000000);
+INSERT INTO top_hitspouse VALUES (6, "Xmen Apocalypse", 542000000);
+INSERT INTO top_hitspouse VALUES (7, "Cheaper by the Dozen", 210000000);
+INSERT INTO top_hitspouse VALUES (8, "The Last Shot", 643000000);
+
+
+
+--Shows the actor with their spouse and what the actos is famous for
+
+
+SELECT famous_people.name, famous_people.spouse, famousfor
+FROM famous_people 
+JOIN famous_for b
+ON famous_people.name=b.name;
+
+--Shows the actor and their spouses famous for columns respectively
+
+
+SELECT *
+FROM famous_people 
+JOIN famous_for b
+ON famous_people.name=b.name
+JOIN spouse_famous
+ON spouse_famous.id=famous_people.id;
+
+
+--Shows top selling movies or albums in descending order with Actor movies/songs listed first and spouse movies/songs listed 2nd
+
+
+
+SELECT *
+FROM famous_people
+JOIN top_hit
+ON famous_people.id=top_hit.id
+JOIN top_hitspouse
+ON top_hitspouse.id=famous_people.id
+ORDER BY dollars_albums DESC;
+
+
+
+
+
+
+
+
+
