@@ -1,0 +1,16 @@
+This project uses US Baby Names database from Kaggle.
+
+
+--Top 20 most popular female names Nationally in 1880
+SELECT nationalnames.name, nationalnames.count
+FROM babynames.nationalnames
+WHERE nationalnames.year = '1880'
+LIMIT 20
+
+
+--Top 20 most popular male names Nationally in 1880
+SELECT nationalnames.name, nationalnames.count
+FROM babynames.nationalnames
+WHERE nationalnames.year = '1880'
+AND GENDER = 'M'
+LIMIT 20
