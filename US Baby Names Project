@@ -14,3 +14,39 @@ FROM babynames.nationalnames
 WHERE nationalnames.year = '1880'
 AND GENDER = 'M'
 LIMIT 20
+
+
+--Top 25 names by popularity Nationally in 1880 
+SELECT nationalnames.name, nationalnames.count
+FROM babynames.nationalnames
+WHERE nationalnames.year = '1880' 
+ORDER BY nationalnames.count DESC LIMIT 25
+
+
+--Top female names for each state in 1986
+SELECT state, name, max(count), year
+FROM babynames.statenames
+WHERE statenames.year = '1986' AND gender = 'F'
+GROUP BY statenames.state
+ORDER BY statenames.state
+LIMIT 50
+
+
+--Top male names for each state in 1986
+SELECT state, name, max(count), year
+FROM babynames.statenames
+WHERE statenames.year = '1986' AND gender = 'M'
+GROUP BY statenames.state
+ORDER BY statenames.state
+LIMIT 50;
+
+
+--Least popular names by state in 1986
+SELECT state, name, min(count), year
+FROM babynames.statenames
+WHERE statenames.year = '1986' 
+GROUP BY statenames.state
+ORDER BY statenames.count 
+LIMIT 50
+
+
